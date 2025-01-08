@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const InscriptionItem = ({ inscription, addressId }) => {
   const navigate = useNavigate();
@@ -11,19 +12,7 @@ const InscriptionItem = ({ inscription, addressId }) => {
       className='flex items-center justify-between bg-gray-900 p-4 rounded-lg hover:bg-gray-800 cursor-pointer'
     >
       <span className='text-xl'>Inscription {shortHash}</span>
-      <svg 
-        className="w-6 h-6" 
-        fill="none" 
-        stroke="currentColor" 
-        viewBox="0 0 24 24"
-      >
-        <path 
-          strokeLinecap="round" 
-          strokeLinejoin="round" 
-          strokeWidth={2} 
-          d="M9 5l7 7-7 7" 
-        />
-      </svg>
+      <ChevronRightIcon className="w-6 h-6" />
     </div>
   );
 };
