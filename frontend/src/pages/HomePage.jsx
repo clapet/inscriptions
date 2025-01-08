@@ -9,9 +9,11 @@ function HomePage() {
   const inscriptions = useSelector((state) => state.inscriptions.inscriptions);
 
   const handleLookup = async () => {
-    const response = await fetch(`http://localhost:3000/inscriptions?owner=${ownerBitcoinAddress}`);
+    const response = await fetch(`http://localhost:3001/api/inscriptions/v1/address/${ownerBitcoinAddress}/ordinal-utxo`);
     const data = await response.json();
-    dispatch(setInscriptions(data));
+    const results = data.results;
+
+    dispatch(setInscriptions(results));
   };
 
   return (
@@ -43,7 +45,7 @@ function HomePage() {
           <h2 className='text-2xl font-bold mb-4'>Results</h2>
           <div className='space-y-2'>
             {inscriptions.map((inscription) => (
-              <InscriptionItem key={inscription.id} inscription={inscription} />
+              <InscriptionItem key={inscription.txid} inscription={inscription} />
             ))}
           </div>
         </div>

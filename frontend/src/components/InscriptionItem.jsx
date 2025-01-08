@@ -1,10 +1,12 @@
 const InscriptionItem = ({ inscription }) => {
+  const inscriptionId = inscription.inscriptions[0].id;
+  const shortHash = inscriptionId.slice(0, 8);
   return (
     <div 
       key={inscription.id}
       className='flex items-center justify-between bg-gray-900 p-4 rounded-lg hover:bg-gray-800 cursor-pointer'
     >
-      <span className='text-xl'>Inscription {inscription.name}</span>
+      <span className='text-xl'>Inscription {shortHash}</span>
       <svg 
         className="w-6 h-6" 
         fill="none" 
