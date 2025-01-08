@@ -4,7 +4,13 @@ import { setInscription } from '../store/inscriptionsSlice';
 import { useEffect } from 'react';
 
 function isImage(contentType) {
-  return contentType && (contentType.startsWith('image/') || contentType.startsWith('webp') );
+  if (!contentType){ 
+    return false;
+  }
+  if (contentType.startsWith('image/svg+xml')){
+    return false;
+  }
+  return contentType.startsWith('image/') || contentType.startsWith('webp');
 }
 
 const InscriptionPage = () => {
@@ -47,6 +53,16 @@ const InscriptionPage = () => {
             />
           </div>
         )}
+        {inscription.content_type && !isImage(inscription.content_type) && (
+          <div className="flex justify-center mb-8">
+            <iframe 
+              src={`https://ord.xverse.app/content/${inscription.id}`}
+              title={`Inscription ${inscription.number} Content`}
+              className="w-full max-w-[400px] aspect-square object-contain"
+            />
+          </div>
+        )}
+
         {/* Details */}
         <div className="space-y-8">
           <h1 className="text-xl">
@@ -59,7 +75,7 @@ const InscriptionPage = () => {
               Inscription ID
             </h2>
             <p className="font-mono break-all">
-              {inscription.id}
+              <span className="font-bold">{inscription.id}</span>
             </p>
           </div>
 
@@ -69,13 +85,13 @@ const InscriptionPage = () => {
               Owner Address
             </h2>
             <p className="font-mono break-all">
-              {inscription.address}
+              <span className="font-bold">{inscription.address}</span>
             </p>
           </div>
 
           {/* Attributes */}
           <div>
-            <h2 className="text-sm text-gray-400 mb-4">
+            <h2 className="text-lg mb-4 text-white font-bold">
               Attributes
             </h2>
             <div className="grid grid-cols-1 gap-6">
@@ -84,7 +100,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Output Value
                 </h3>
-                <p>{inscription.output}</p>
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.output}</p>
               </div>
 
               {/* Content Type */}
@@ -92,7 +108,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Content Type
                 </h3>
-                <p>{inscription.content_type}</p>
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_type}</p>
               </div>
 
               {/* Content Length */}
@@ -100,7 +116,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Content Length
                 </h3>
-                <p>{inscription.content_length} bytes</p>
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_length} bytes</p>
               </div>
 
               {/* Location */}
@@ -108,7 +124,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Location
                 </h3>
-                <p className="font-mono break-all">
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">
                   {inscription.location}
                 </p>
               </div>
@@ -117,7 +133,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Genesis Transaction
                 </h3>
-                <p className="font-mono break-all">
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">
                   {inscription.genesis_tx_id}
                 </p>
               </div>
