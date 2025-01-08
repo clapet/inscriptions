@@ -5,7 +5,7 @@ import InscriptionItem from '../components/InscriptionItem';
 
 function HomePage() {
   const dispatch = useDispatch();
-  const [ownerBitcoinAddress, setOwnerBitcoinAddress] = useState('bc1pe6y27ey6gzh6p0j250kz23zra7xn89703pvmtzx239zzstg47j3s3vdvvs');
+  const [ownerBitcoinAddress, setOwnerBitcoinAddress] = useState('');
   const inscriptions = useSelector((state) => state.inscriptions.inscriptions);
 
   const handleLookup = async () => {
