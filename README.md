@@ -10,7 +10,7 @@ This is a simple web application that allows you to look up inscriptions by owne
 - TailwindCSS
 - Redux
 - Express
-- Undici
+- Axios
 
 ### Local Development
 
