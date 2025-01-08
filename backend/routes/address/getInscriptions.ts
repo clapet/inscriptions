@@ -14,7 +14,6 @@ export default async function getInscriptions(
     return res.json(response);
   } catch (error) {
     res.locals.statusCode = 500;
-    res.locals.message = 'Failed to fetch data';
     return next(new Error('Failed to fetch data'));
   }
 }
