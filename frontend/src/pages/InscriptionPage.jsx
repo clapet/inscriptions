@@ -35,7 +35,7 @@ const InscriptionPage = () => {
       {/* Header */}
       <header className="border-b border-white/10 p-4 flex items-center">
         <button 
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           className="mr-4 hover:opacity-75 text-white"
         >
           <ChevronLeftIcon className="w-6 h-6" />
