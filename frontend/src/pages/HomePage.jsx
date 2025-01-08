@@ -18,7 +18,7 @@ function HomePage() {
 
   return (
     <div className='w-full max-w-2xl px-4 py-8'>
-      <h1 className='text-4xl font-bold mb-12 text-center'>
+      <h1 className='text-2xl font-bold mb-12 text-center'>
         Ordinal Inscription Lookup
       </h1>
       

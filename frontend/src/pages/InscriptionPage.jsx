@@ -108,7 +108,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Content Type
                 </h3>
-                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_type}</p>
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_type || 'Not available'}</p>
               </div>
 
               {/* Content Length */}
@@ -116,7 +116,7 @@ const InscriptionPage = () => {
                 <h3 className="text-sm text-gray-400 mb-1">
                   Content Length
                 </h3>
-                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_length} bytes</p>
+                <p className="bg-gray-800 p-2 rounded-md font-mono break-all">{inscription.content_length ? `${inscription.content_length} bytes` : 'Not available'}</p>
               </div>
 
               {/* Location */}
