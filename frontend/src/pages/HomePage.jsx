@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setInscriptions } from '../store/inscriptionsSlice';
+import { setInscriptions, setOwnerBitcoinAddress } from '../store/inscriptionsSlice';
 import InscriptionItem from '../components/InscriptionItem';
 
 function HomePage() {
   const dispatch = useDispatch();
-  const [ownerBitcoinAddress, setOwnerBitcoinAddress] = useState('');
+  const ownerBitcoinAddress = useSelector((state) => state.inscriptions.ownerBitcoinAddress);
   const [error, setError] = useState('');
   const inscriptions = useSelector((state) => state.inscriptions.inscriptions);
 
@@ -36,7 +36,7 @@ function HomePage() {
           type="text"
           value={ownerBitcoinAddress}
           onChange={(e) => {
-            setOwnerBitcoinAddress(e.target.value);
+            dispatch(setOwnerBitcoinAddress(e.target.value));
             setError('');
           }}
         />
