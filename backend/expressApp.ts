@@ -3,8 +3,7 @@ import cors from 'cors';
 import pino from 'pino';
 import loggerMiddleware from 'pino-http';
 import endpoints from './endpoints';
-
-// import errorMiddleware from './middleware/errorMiddleware';
+import errorMiddleware from './middlewares/errorMiddleware';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -48,6 +47,6 @@ export default function index() {
 
   app.use(express.json());
   app.use('/api/inscriptions/v1', endpoints());
-  // app.use(errorMiddleware);
+  app.use(errorMiddleware);
   return app;
 }
