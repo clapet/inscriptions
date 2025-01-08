@@ -2,11 +2,16 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store';
 import HomePage from './pages/HomePage';
-
+import InscriptionPage, { inscriptionLoader } from './pages/InscriptionPage';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
+  },
+  {
+    path: '/address/:addressId/inscriptions/:inscriptionId',
+    element: <InscriptionPage />,
+    loader: inscriptionLoader,
   },
 ]);
 

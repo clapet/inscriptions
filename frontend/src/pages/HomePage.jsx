@@ -45,7 +45,7 @@ function HomePage() {
           <h2 className='text-2xl font-bold mb-4'>Results</h2>
           <div className='space-y-2'>
             {inscriptions.map((inscription) => (
-              <InscriptionItem key={inscription.txid} inscription={inscription} />
+              <InscriptionItem key={inscription.inscriptions[0].id} inscription={inscription} addressId={ownerBitcoinAddress}   />
             ))}
           </div>
         </div>
